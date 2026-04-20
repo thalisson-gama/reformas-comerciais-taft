@@ -1,0 +1,2005 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0E5B5D" />
+  <meta name="description" content="TAFT Engenharia - Reformas comerciais em São Paulo com prazo travado em contrato e orçamento fechado desde a assinatura. Para quem não pode perder um dia a mais de portas fechadas." />
+  <title>TAFT Engenharia | Reformas Comerciais com Prazo e Orçamento Travados em Contrato</title>
+
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES - Paleta TAFT (extraída da logo)
+    ============================================================ */
+    :root {
+      --teal:         #147E7E;
+      --teal-dark:    #0E5B5D;
+      --teal-deep:    #0A4345;
+      --teal-light:   #1E9599;
+      --teal-soft:    rgba(20, 126, 126, 0.08);
+
+      --black:        #0A0A0A;
+      --black-soft:   #141414;
+      --graphite:     #1F1F1F;
+      --charcoal:     #2A2A2A;
+      --white:        #FFFFFF;
+      --off-white:    #FAFAF8;
+      --stone:        #F3F2EE;
+      --border:       #E4E4E0;
+      --text-muted:   #6A6A67;
+      --text-soft:    #8E8E8B;
+
+      --font-main:    'Inter', sans-serif;
+      --radius-btn:   2px;
+      --radius-card:  4px;
+      --transition:   0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      --shadow-sm:    0 2px 8px rgba(10, 10, 10, 0.04);
+      --shadow-md:    0 8px 24px rgba(10, 10, 10, 0.08);
+      --shadow-lg:    0 24px 64px rgba(10, 10, 10, 0.16);
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: var(--font-main);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--black);
+      background: var(--white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-feature-settings: 'ss01', 'cv11';
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { font-family: inherit; }
+
+    ::selection { background: var(--teal); color: var(--white); }
+
+    /* ============================================================
+       UTILITY
+    ============================================================ */
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--teal);
+      display: inline-block;
+    }
+    .section-title {
+      font-size: clamp(28px, 4.4vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--black);
+    }
+    .section-subtitle {
+      font-size: clamp(15px, 1.4vw, 17px);
+      line-height: 1.7;
+      margin-top: 20px;
+      max-width: 680px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 18px 36px;
+      font-family: var(--font-main);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: var(--radius-btn);
+      border: none;
+      cursor: pointer;
+      transition: transform var(--transition), background var(--transition), color var(--transition), box-shadow var(--transition), border-color var(--transition);
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+    .btn-primary {
+      background: var(--teal);
+      color: var(--white);
+      box-shadow: 0 6px 20px rgba(20, 126, 126, 0.22);
+    }
+    .btn-primary:hover {
+      background: var(--teal-dark);
+      box-shadow: 0 10px 28px rgba(20, 126, 126, 0.34);
+    }
+    .btn-dark {
+      background: var(--black);
+      color: var(--white);
+    }
+    .btn-dark:hover { background: var(--graphite); }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ============================================================
+       1. HERO (logo centralizada, sem navbar, CTA único)
+    ============================================================ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 64px 24px 80px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.66) 50%, rgba(14,91,93,0.55) 100%),
+        url('images/hero-loja.webp') center/cover no-repeat fixed;
+      color: var(--white);
+    }
+    @media (hover: none) {
+      .hero { background-attachment: scroll; }
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 20%, rgba(20,126,126,0.22), transparent 55%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 70%, rgba(10,10,10,0.9) 100%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 940px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    .hero-logo {
+      display: inline-flex;
+      margin: 0 auto 28px;
+    }
+    .hero-logo img {
+      width: 160px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 8px 22px rgba(0, 0, 0, 0.35));
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 22px;
+      padding: 9px 18px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 100px;
+      width: fit-content;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--teal-light);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--teal-light);
+    }
+
+    .hero-headline {
+      font-size: clamp(30px, 4.6vw, 54px);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.06;
+      margin-bottom: 22px;
+      max-width: 880px;
+    }
+    .hero-headline em {
+      color: var(--teal-light);
+      font-style: normal;
+      font-weight: 700;
+    }
+    .hero-headline .divider {
+      color: var(--teal-light);
+      font-weight: 300;
+      margin: 0 0.18em;
+      opacity: 0.7;
+    }
+
+    .hero-subheadline {
+      font-size: clamp(15px, 1.35vw, 17px);
+      font-weight: 400;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.78);
+      max-width: 620px;
+      margin: 0 auto 32px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      opacity: 0.55;
+      color: var(--white);
+      animation: bounce 2.4s infinite;
+    }
+    .hero-scroll svg { width: 18px; height: 18px; }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+
+    .social-proof {
+      display: flex;
+      gap: 40px;
+      margin: 44px auto 0;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .proof-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .proof-text { display: flex; flex-direction: column; gap: 4px; align-items: center; }
+    .proof-number {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+      letter-spacing: -0.015em;
+    }
+    .proof-label {
+      font-size: 10.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.58);
+      font-weight: 500;
+    }
+
+    /* ============================================================
+       2. BENEFÍCIOS
+    ============================================================ */
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      background: var(--black);
+    }
+    .benefit-col {
+      padding: 64px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 18px;
+      position: relative;
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+    .benefit-col:last-child { border-right: none; }
+    .benefit-col:nth-child(2) { background: var(--graphite); }
+    .benefit-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--teal-soft);
+      border: 1px solid rgba(30,149,153,0.25);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .benefit-icon svg { width: 26px; height: 26px; stroke: var(--teal-light); }
+    .benefit-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+    }
+    .benefit-text {
+      font-size: clamp(20px, 2vw, 24px);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.28;
+      letter-spacing: -0.01em;
+    }
+    .benefit-desc {
+      font-size: 15px;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.7;
+      font-weight: 400;
+    }
+
+    /* ============================================================
+       3. EXEMPLOS REAIS
+    ============================================================ */
+    .examples {
+      padding: 88px 24px;
+      background: var(--stone);
+      text-align: center;
+    }
+    .examples .container { display: flex; flex-direction: column; align-items: center; }
+    .examples .section-title { color: var(--black); }
+    .examples .section-subtitle {
+      color: var(--text-muted);
+      margin: 16px auto 44px;
+    }
+    .examples-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1180px;
+      width: 100%;
+      margin: 0 auto 32px;
+    }
+    .example-card {
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .example-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+    .card-header {
+      background: var(--black);
+      position: relative;
+    }
+    .card-header img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      opacity: 0.95;
+    }
+    .card-specs {
+      display: flex;
+      justify-content: space-around;
+      padding: 16px 10px;
+      background: var(--black);
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .spec-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      color: var(--white);
+      flex: 1;
+    }
+    .spec-item svg { width: 20px; height: 20px; stroke: var(--teal-light); opacity: 0.9; }
+    .spec-item span {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .spec-item small {
+      font-size: 9px;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+    .card-body {
+      padding: 28px 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      text-align: left;
+    }
+    .card-body .card-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .card-value {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--teal);
+      letter-spacing: -0.01em;
+    }
+    .card-row {
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+    }
+    .card-row .card-value {
+      color: var(--text-soft);
+      text-decoration: line-through;
+      font-size: 18px;
+      font-weight: 500;
+    }
+    .card-footer {
+      background: var(--black);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .card-footer .footer-label {
+      font-size: 10px;
+      color: rgba(255,255,255,0.55);
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .card-installment {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--white);
+      border: 1.5px solid rgba(30,149,153,0.5);
+      border-radius: 40px;
+      padding: 8px 28px;
+      letter-spacing: -0.01em;
+      background: rgba(20,126,126,0.12);
+    }
+    .examples-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin: 0 auto 28px;
+      font-style: italic;
+      max-width: 740px;
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       4. OBRAS REALIZADAS
+    ============================================================ */
+    .gallery {
+      padding: 88px 24px;
+      background: var(--white);
+      text-align: center;
+    }
+    .gallery .container { display: flex; flex-direction: column; align-items: center; }
+    .gallery .section-title { color: var(--black); }
+    .gallery .section-subtitle { margin: 16px auto 44px; color: var(--text-muted); }
+    .carousel-wrapper {
+      position: relative;
+      max-width: 1180px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .carousel-viewport {
+      overflow: hidden;
+      border-radius: var(--radius-card);
+      touch-action: pan-y;
+      cursor: grab;
+    }
+    .carousel-viewport.dragging { cursor: grabbing; }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      gap: 20px;
+      user-select: none;
+    }
+    .carousel-slide {
+      flex: 0 0 calc((100% - 40px) / 3);
+      aspect-ratio: 4 / 3;
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      -webkit-user-drag: none;
+      user-select: none;
+      pointer-events: none;
+    }
+    .carousel-slide:hover img { transform: scale(1.06); }
+    .carousel-slide::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 55%, rgba(10,10,10,0.35) 100%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .carousel-slide:hover::after { opacity: 1; }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 52px;
+      height: 52px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      box-shadow: var(--shadow-md);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: background var(--transition), transform var(--transition), border-color var(--transition);
+    }
+    .carousel-btn:hover {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+    .carousel-btn:hover svg { stroke: var(--white); }
+    .carousel-btn svg { width: 18px; height: 18px; stroke: var(--black); stroke-width: 2.2; fill: none; }
+    .carousel-prev { left: -26px; }
+    .carousel-next { right: -26px; }
+
+    /* ============================================================
+       5. RESPALDO TÉCNICO E JURÍDICO
+    ============================================================ */
+    .security {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      background: var(--black);
+    }
+    .security-text {
+      padding: 80px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+    }
+    .security-text .section-title { color: var(--white); }
+    .security-subtitle {
+      font-size: 17px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.92);
+      line-height: 1.55;
+      letter-spacing: -0.005em;
+    }
+    .security-divider {
+      width: 56px;
+      height: 2px;
+      background: var(--teal-light);
+      margin: 4px 0;
+    }
+    .security-text p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.68);
+      line-height: 1.8;
+    }
+    .security-signature {
+      margin-top: 12px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.14);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .security-signature-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.01em;
+    }
+    .security-signature-role {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      font-weight: 500;
+    }
+    .security-image {
+      position: relative;
+      background: var(--black-soft);
+      overflow: hidden;
+      min-height: 440px;
+    }
+    .security-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.78;
+    }
+    .security-badge {
+      position: absolute;
+      bottom: 36px;
+      left: 36px;
+      background: rgba(20,126,126,0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: var(--white);
+      padding: 18px 24px;
+      border-radius: 3px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      box-shadow: var(--shadow-lg);
+    }
+    .security-badge strong {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .security-badge span {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      opacity: 0.88;
+      font-weight: 500;
+    }
+
+    /* ============================================================
+       FAQ
+    ============================================================ */
+    .faq {
+      padding: 88px 24px;
+      background: var(--stone);
+    }
+    .faq .container { max-width: 860px; }
+    .faq .section-title { color: var(--black); text-align: center; }
+    .faq .section-label { display: flex; justify-content: center; text-align: center; margin: 0 auto 16px; }
+    .faq-head { text-align: center; }
+    .faq .section-subtitle { color: var(--text-muted); text-align: center; margin: 16px auto 40px; }
+    .faq-item {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      margin-bottom: 12px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .faq-item:hover { border-color: var(--teal); }
+    .faq-item.open { border-color: var(--teal); box-shadow: var(--shadow-sm); }
+    .faq-question {
+      width: 100%;
+      padding: 24px 28px;
+      background: none;
+      border: none;
+      font-family: var(--font-main);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--black);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      letter-spacing: -0.005em;
+    }
+    .faq-question::after {
+      content: '';
+      width: 14px;
+      height: 14px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23147E7E' stroke-width='2.5' stroke-linecap='round'%3E%3Cline x1='12' y1='5' x2='12' y2='19'/%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      transition: transform 0.35s ease;
+      flex-shrink: 0;
+    }
+    .faq-item.open .faq-question::after {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23147E7E' stroke-width='2.5' stroke-linecap='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3C/svg%3E");
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .faq-item.open .faq-answer { max-height: 500px; }
+    .faq-answer p {
+      padding: 0 28px 24px;
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--text-muted);
+    }
+
+    /* ============================================================
+       6. FORMULÁRIO
+    ============================================================ */
+    .form-section {
+      padding: 88px 24px;
+      background:
+        radial-gradient(ellipse at 80% 10%, rgba(20,126,126,0.25), transparent 60%),
+        linear-gradient(160deg, var(--black) 0%, var(--teal-deep) 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .form-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+      opacity: 0.5;
+    }
+    .form-section .container { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; }
+    .form-section .section-label { margin: 0 auto 18px; }
+    .form-section .section-title { color: var(--white); }
+    .form-section .section-subtitle {
+      color: rgba(255,255,255,0.7);
+      margin: 16px auto 40px;
+    }
+
+    .steps-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 36px;
+    }
+    .step-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .step-circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: 1.5px solid rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      transition: all var(--transition);
+    }
+    .step-circle.active   { background: var(--teal); border-color: var(--teal); color: white; }
+    .step-circle.complete { background: var(--teal-dark); border-color: var(--teal-dark); color: white; }
+    .step-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      transition: color var(--transition);
+    }
+    .step-item.active .step-label   { color: var(--white); }
+    .step-item.complete .step-label { color: rgba(255,255,255,0.8); }
+    .step-connector {
+      width: 80px;
+      height: 1.5px;
+      background: rgba(255,255,255,0.14);
+      margin-bottom: 26px;
+      position: relative;
+    }
+    .step-connector-fill {
+      position: absolute;
+      left: 0; top: 0;
+      height: 100%;
+      background: var(--teal);
+      width: 0%;
+      transition: width 0.6s ease;
+    }
+
+    .form-card {
+      max-width: 580px;
+      width: 100%;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-card);
+      padding: 40px 36px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      text-align: left;
+    }
+    .form-step { display: none; }
+    .form-step.active { display: block; animation: fadeSlide 0.5s ease; }
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateX(16px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    .form-step-heading {
+      color: white;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 22px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 10px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      max-width: 100%;
+      padding: 16px 18px;
+      background: rgba(255,255,255,0.95);
+      border: 1.5px solid transparent;
+      border-radius: 3px;
+      font-family: var(--font-main);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--black);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23147E7E' stroke-width='2.5' stroke-linecap='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      background-size: 16px;
+      background-color: rgba(255,255,255,0.95);
+      padding-right: 44px;
+    }
+    .form-group input::placeholder { color: #aaa; font-weight: 400; }
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--teal-light);
+      box-shadow: 0 0 0 3px rgba(30,149,153,0.25);
+    }
+    .form-group input.error,
+    .form-group select.error {
+      border-color: #ef4444;
+      box-shadow: 0 0 0 3px rgba(239,68,68,0.15);
+    }
+    .error-msg {
+      font-size: 12px;
+      color: #fca5a5;
+      margin-top: 6px;
+      display: none;
+    }
+    .error-msg.show { display: block; }
+    .form-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 30px;
+    }
+    .form-actions .btn {
+      flex: 1;
+      padding: 17px;
+      font-size: 12px;
+    }
+    .btn-back {
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.85);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .btn-back:hover { background: rgba(255,255,255,0.15); }
+
+    .form-success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+      text-align: center;
+      animation: fadeSlide 0.5s ease;
+    }
+    .form-success.show { display: flex; }
+    .success-icon {
+      width: 72px;
+      height: 72px;
+      background: var(--teal);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 28px rgba(20,126,126,0.45);
+    }
+    .success-icon svg { width: 34px; height: 34px; stroke: white; stroke-width: 2.5; fill: none; }
+    .form-success h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: -0.01em;
+    }
+    .form-success p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.72);
+      max-width: 420px;
+      line-height: 1.6;
+    }
+
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 0.02em;
+    }
+    .trust-item svg { width: 16px; height: 16px; stroke: var(--teal-light); opacity: 0.9; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      position: relative;
+      padding: 56px 24px 40px;
+      text-align: center;
+      background: var(--black);
+      color: rgba(255,255,255,0.55);
+    }
+    .footer-logo {
+      display: inline-flex;
+      margin: 0 auto 20px;
+    }
+    .footer-logo img {
+      width: 100px;
+      height: auto;
+      display: block;
+      opacity: 0.95;
+    }
+    .footer-divider {
+      width: 36px;
+      height: 1.5px;
+      background: var(--teal);
+      margin: 0 auto 20px;
+    }
+    .footer-copy {
+      font-size: 13px;
+      margin-bottom: 10px;
+      color: rgba(255,255,255,0.7);
+    }
+    .footer-dev {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.55;
+    }
+    .footer-dev a {
+      color: var(--teal-light);
+      font-weight: 600;
+      transition: color var(--transition);
+    }
+    .footer-dev a:hover { color: var(--white); }
+
+    /* ============================================================
+       CTA FIXO MOBILE
+    ============================================================ */
+    .mobile-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9998;
+      padding: 12px 16px;
+      background: rgba(10,10,10,0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+    }
+    .mobile-cta.visible { transform: translateY(0); }
+    .mobile-cta .btn { width: 100%; padding: 16px; font-size: 12px; }
+
+    /* ============================================================
+       RESPONSIVO
+    ============================================================ */
+    @media (max-width: 1024px) {
+      .security-text { padding: 64px 44px; }
+    }
+
+    @media (max-width: 900px) {
+      .hero { padding: 52px 20px 72px; }
+      .hero-logo { margin-bottom: 22px; }
+      .hero-logo img { width: 138px; }
+      .social-proof { gap: 28px; margin-top: 36px; padding-top: 26px; }
+
+      .examples, .gallery, .faq, .form-section { padding: 64px 20px; }
+
+      .benefits { grid-template-columns: 1fr; }
+      .benefit-col {
+        padding: 44px 28px;
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        gap: 16px;
+      }
+      .benefit-col:last-child { border-bottom: none; }
+
+      .examples-grid {
+        grid-template-columns: 1fr;
+        max-width: 440px;
+        gap: 20px;
+      }
+
+      .security { grid-template-columns: 1fr; }
+      .security-text { padding: 52px 26px; gap: 18px; }
+      .security-image { min-height: 280px; }
+
+      .form-card { padding: 28px 22px; }
+      .form-actions { flex-direction: column-reverse; }
+
+      .mobile-cta { display: block; }
+    }
+
+    @media (max-width: 680px) {
+      .hero { padding: 44px 18px 64px; }
+      .hero-logo { margin-bottom: 18px; }
+      .hero-logo img { width: 118px; }
+      .hero-eyebrow {
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        padding: 7px 13px;
+        margin-bottom: 18px;
+      }
+      .hero-subheadline { margin-bottom: 24px; }
+      .hero-buttons { width: 100%; }
+      .hero-buttons .btn { width: 100%; padding: 15px 14px; font-size: 11px; letter-spacing: 0.08em; }
+      .social-proof { gap: 18px; padding-top: 24px; margin-top: 28px; }
+      .proof-number { font-size: 20px; }
+      .proof-item { gap: 10px; }
+
+      .card-specs { padding: 12px 4px; }
+      .spec-item { gap: 3px; }
+      .spec-item span { font-size: 11px; }
+      .card-body { padding: 22px 20px; gap: 14px; }
+      .card-installment { font-size: 20px; padding: 6px 22px; }
+      .card-footer { padding: 18px; }
+
+      .carousel-slide { flex: 0 0 calc(100%); aspect-ratio: 3 / 2; }
+      .carousel-prev { left: 8px; }
+      .carousel-next { right: 8px; }
+      .carousel-btn { width: 42px; height: 42px; }
+
+      .step-connector { width: 48px; }
+      .form-card { padding: 24px 18px; }
+      .form-step-heading { font-size: 12px; margin-bottom: 18px; }
+      .form-group { margin-bottom: 16px; }
+
+      .trust-badges { gap: 16px 22px; margin-top: 26px; }
+      .trust-item { font-size: 11px; }
+
+      footer { padding: 44px 20px 32px; }
+      .footer-logo img { width: 86px; }
+
+      .section-subtitle { font-size: 14.5px; }
+    }
+
+    @media (max-width: 380px) {
+      .hero-eyebrow { padding: 6px 11px; letter-spacing: 0.16em; font-size: 9.5px; }
+      .hero-logo img { width: 104px; }
+      .proof-label { font-size: 10px; }
+      .proof-number { font-size: 19px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       1. HERO
+  ============================================================ -->
+  <header class="hero" id="topo">
+    <div class="hero-content">
+      <div class="hero-logo">
+        <img src="images/logo-taft.webp" alt="TAFT Engenharia" />
+      </div>
+
+      <span class="hero-eyebrow">Reformas Comerciais · Prazo Contratual · São Paulo</span>
+
+      <h1 class="hero-headline">
+        Reforme seu ponto comercial com <em>prazo em contrato</em>, orçamento fechado e zero custo oculto.
+      </h1>
+
+      <p class="hero-subheadline">
+        Reformas e adequações comerciais em São Paulo sob cronograma travado em contrato e preço fechado desde a assinatura. Para empresários que sabem que cada dia de portas fechadas custa caro demais.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#formulario" class="btn btn-primary">Solicitar Cronograma e Orçamento</a>
+      </div>
+
+      <div class="social-proof">
+        <div class="proof-item">
+          <div class="proof-text">
+            <span class="proof-number" data-count="30">+30</span>
+            <span class="proof-label">Obras executadas</span>
+          </div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-text">
+            <span class="proof-number" data-count="100">100%</span>
+            <span class="proof-label">Preço fechado em contrato</span>
+          </div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-text">
+            <span class="proof-number" data-count="100">100%</span>
+            <span class="proof-label">ART emitida antes da obra</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <span>Explorar</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       2. BENEFÍCIOS
+  ============================================================ -->
+  <section class="benefits" aria-label="Benefícios TAFT">
+
+    <div class="benefit-col fade-in">
+      <div class="benefit-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+        </svg>
+      </div>
+      <span class="benefit-label">Prazo Travado em Contrato</span>
+      <p class="benefit-text">Data de inauguração registrada em contrato, com cláusula de cumprimento.</p>
+      <p class="benefit-desc">Cronograma físico detalhado, marcos semanais auditáveis e comunicação antecipada de qualquer risco de desvio. A obra termina quando foi prometido - não quando o cliente descobre que atrasou.</p>
+    </div>
+
+    <div class="benefit-col fade-in" style="transition-delay:0.15s">
+      <div class="benefit-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+        </svg>
+      </div>
+      <span class="benefit-label">Orçamento Fechado</span>
+      <p class="benefit-text">Preço acordado na assinatura. Sem aditivos surpresa, sem reajuste no meio da obra.</p>
+      <p class="benefit-desc">Escopo detalhado serviço por serviço, planilha de custo aberta e cláusula de preço travado. Qualquer alteração do escopo passa por aprovação formal antes de virar custo. Seu capital de giro fica protegido do início ao fim.</p>
+    </div>
+
+    <div class="benefit-col fade-in" style="transition-delay:0.3s">
+      <div class="benefit-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>
+        </svg>
+      </div>
+      <span class="benefit-label">Execução Técnica Auditável</span>
+      <p class="benefit-text">Engenharia registrada, ART emitida e relatório semanal de avanço.</p>
+      <p class="benefit-desc">Equipe própria com responsabilidade técnica formalizada no CREA, ART emitida antes do primeiro serviço em campo e relatório executivo semanal com fotos, medições e status de cada frente. Zero zona cinza.</p>
+    </div>
+
+  </section>
+
+  <!-- ============================================================
+       3. EXEMPLOS REAIS
+  ============================================================ -->
+  <section class="examples fade-in">
+    <div class="container">
+      <p class="section-label">Cenários típicos</p>
+      <h2 class="section-title">
+        Três formatos de reforma<br/>comercial que entregamos
+      </h2>
+      <p class="section-subtitle">
+        Escopo, frentes de trabalho e prazo contratual típico para os formatos de obra comercial mais executados pela TAFT. Referência objetiva antes do diagnóstico personalizado do seu ponto.
+      </p>
+
+      <div class="examples-grid">
+
+        <!-- CARD 1 - FOOD SERVICE -->
+        <article class="example-card fade-in">
+          <div class="card-header">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=85&fm=webp" alt="Reforma de restaurante com cozinha industrial e salão" />
+            <div class="card-specs">
+              <div class="spec-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                <span>120-180 m²</span><small>Área</small>
+              </div>
+              <div class="spec-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 2v6a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V2"/><path d="M8 10v12"/><path d="M16 2v20"/><path d="M18 2c-1 2-2 4-2 6 0 2 1 4 2 4"/></svg>
+                <span>Food Service</span><small>Segmento</small>
+              </div>
+              <div class="spec-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="14 2 14 8 20 8"/><path d="M4 2h10l6 6v14H4z"/><path d="M9 13h6"/><path d="M9 17h6"/></svg>
+                <span>12 frentes</span><small>Serviços</small>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div>
+              <p class="card-label">Escopo principal</p>
+              <p class="card-value">Cozinha industrial, salão, exaustão</p>
+            </div>
+            <div class="card-row">
+              <p class="card-label">Adequações obrigatórias</p>
+              <p class="card-value">Visa, AVCB, elétrica 380V</p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="footer-label">Prazo contratual típico</span>
+            <span class="card-installment">75 a 90 dias</span>
+          </div>
+        </article>
+
+        <!-- CARD 2 - CLÍNICA / CONSULTÓRIO -->
+        <article class="example-card fade-in" style="transition-delay:0.15s">
+          <div class="card-header">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=900&q=85&fm=webp" alt="Reforma de clínica e consultório com recepção e consultórios" />
+            <div class="card-specs">
+              <div class="spec-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                <span>80-140 m²</span><small>Área</small>
+              </div>
+              <div class="spec-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2v20"/><path d="M2 12h20"/><circle cx="12" cy="12" r="10"/></svg>
+                <span>Saúde</span><small>Segmento</small>
+              </div>
+              <div class="spec-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="14 2 14 8 20 8"/><path d="M4 2h10l6 6v14H4z"/><path d="M9 13h6"/><path d="M9 17h6"/></svg>
+                <span>8 frentes</span><small>Serviços</small>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div>
+              <p class="card-label">Escopo principal</p>
+              <p class="card-value">Recepção, consultórios, sanitários</p>
+            </div>
+            <div class="card-row">
+              <p class="card-label">Adequações obrigatórias</p>
+              <p class="card-value">Anvisa, acessibilidade, hidráulica</p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="footer-label">Prazo contratual típico</span>
+            <span class="card-installment">50 a 75 dias</span>
+          </div>
+        </article>
+
+        <!-- CARD 3 - VAREJO / LOJA -->
+        <article class="example-card fade-in" style="transition-delay:0.3s">
+          <div class="card-header">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=85&fm=webp" alt="Reforma de loja de varejo com vitrine e iluminação cênica" />
+            <div class="card-specs">
+              <div class="spec-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                <span>80-150 m²</span><small>Área</small>
+              </div>
+              <div class="spec-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                <span>Varejo</span><small>Segmento</small>
+              </div>
+              <div class="spec-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="14 2 14 8 20 8"/><path d="M4 2h10l6 6v14H4z"/><path d="M9 13h6"/><path d="M9 17h6"/></svg>
+                <span>6 frentes</span><small>Serviços</small>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div>
+              <p class="card-label">Escopo principal</p>
+              <p class="card-value">Vitrine, depósito, iluminação cênica</p>
+            </div>
+            <div class="card-row">
+              <p class="card-label">Adequações obrigatórias</p>
+              <p class="card-value">AVCB, climatização, visual de marca</p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="footer-label">Prazo contratual típico</span>
+            <span class="card-installment">45 a 70 dias</span>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="examples-note">* Prazos e áreas representam médias do nosso portfólio comercial em São Paulo. O diagnóstico técnico personalizado confirma prazo exato, escopo detalhado e preço fechado para o seu projeto específico antes da assinatura.</p>
+
+      <a href="#formulario" class="btn btn-primary">Solicitar Diagnóstico Personalizado</a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       4. OBRAS REALIZADAS
+  ============================================================ -->
+  <section class="gallery fade-in">
+    <div class="container">
+      <p class="section-label">Portfolio</p>
+      <h2 class="section-title">Obras comerciais realizadas pela TAFT</h2>
+      <p class="section-subtitle">Pontos comerciais entregues no prazo contratual - lojas, clínicas, restaurantes e escritórios sob o mesmo padrão técnico da assinatura à inauguração.</p>
+
+      <div class="carousel-wrapper" aria-label="Galeria de obras comerciais realizadas">
+        <button class="carousel-btn carousel-prev" aria-label="Imagem anterior">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+
+        <div class="carousel-viewport">
+          <div class="carousel-track" id="carouselTrack">
+            <div class="carousel-slide"><img loading="lazy" src="images/obra-01.webp" alt="Obra comercial realizada pela TAFT Engenharia" /></div>
+            <div class="carousel-slide"><img loading="lazy" src="images/obra-02.webp" alt="Obra comercial realizada pela TAFT Engenharia" /></div>
+            <div class="carousel-slide"><img loading="lazy" src="images/obra-03.webp" alt="Obra comercial realizada pela TAFT Engenharia" /></div>
+            <div class="carousel-slide"><img loading="lazy" src="images/obra-04.webp" alt="Obra comercial realizada pela TAFT Engenharia" /></div>
+            <div class="carousel-slide"><img loading="lazy" src="images/obra-05.webp" alt="Obra comercial realizada pela TAFT Engenharia" /></div>
+            <div class="carousel-slide"><img loading="lazy" src="images/obra-06.webp" alt="Obra comercial realizada pela TAFT Engenharia" /></div>
+            <div class="carousel-slide"><img loading="lazy" src="images/obra-07.webp" alt="Obra comercial realizada pela TAFT Engenharia" /></div>
+            <div class="carousel-slide"><img loading="lazy" src="images/obra-08.webp" alt="Obra comercial realizada pela TAFT Engenharia" /></div>
+            <div class="carousel-slide"><img loading="lazy" src="images/obra-09.webp" alt="Obra comercial realizada pela TAFT Engenharia" /></div>
+            <div class="carousel-slide"><img loading="lazy" src="images/obra-10.webp" alt="Obra comercial realizada pela TAFT Engenharia" /></div>
+            <div class="carousel-slide"><img loading="lazy" src="images/obra-11.webp" alt="Obra comercial realizada pela TAFT Engenharia" /></div>
+            <div class="carousel-slide"><img loading="lazy" src="images/obra-12.webp" alt="Obra comercial realizada pela TAFT Engenharia" /></div>
+            <div class="carousel-slide"><img loading="lazy" src="images/obra-13.webp" alt="Obra comercial realizada pela TAFT Engenharia" /></div>
+            <div class="carousel-slide"><img loading="lazy" src="images/obra-14.webp" alt="Obra comercial realizada pela TAFT Engenharia" /></div>
+            <div class="carousel-slide"><img loading="lazy" src="images/obra-15.webp" alt="Obra comercial realizada pela TAFT Engenharia" /></div>
+          </div>
+        </div>
+
+        <button class="carousel-btn carousel-next" aria-label="Próxima imagem">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       5. RESPALDO TÉCNICO E JURÍDICO
+  ============================================================ -->
+  <section class="security fade-in" aria-label="Respaldo técnico e jurídico">
+
+    <div class="security-text">
+      <p class="section-label">Respaldo técnico e contratual</p>
+      <h2 class="section-title">Seu prazo assinado pelos sócios</h2>
+      <p class="security-subtitle">Bruno Miranda e Emerson conduzem pessoalmente cada obra comercial executada pela TAFT.</p>
+      <div class="security-divider"></div>
+      <p>
+        Fundada em São Paulo por Bruno Miranda e Emerson, a TAFT acumula mais de 30 obras executadas com responsabilidade técnica direta dos sócios. Cada reforma comercial é formalizada com contrato, cronograma físico anexado e ART emitida antes do primeiro serviço em campo.
+      </p>
+      <p>
+        Orçamento fechado desde a assinatura, marcos semanais de avanço e relatório executivo com fotos, medições e status de cada frente. Você segue tocando seu negócio enquanto a obra roda com a mesma previsibilidade de um plano de expansão de capital.
+      </p>
+      <div class="security-signature">
+        <span class="security-signature-name">Bruno Miranda &amp; Emerson</span>
+        <span class="security-signature-role">Sócios-fundadores · TAFT Engenharia</span>
+      </div>
+    </div>
+
+    <div class="security-image">
+      <img loading="lazy" src="images/obra-20.webp" alt="Entrada de academia reformada pela TAFT Engenharia em São Paulo" />
+      <div class="security-badge">
+        <strong>Prazo em contrato</strong>
+        <span>Cláusula de cumprimento</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ============================================================
+       FAQ
+  ============================================================ -->
+  <section class="faq fade-in">
+    <div class="container">
+      <div class="faq-head">
+        <p class="section-label">Dúvidas frequentes</p>
+        <h2 class="section-title">Perguntas antes do próximo passo</h2>
+        <p class="section-subtitle">Respostas diretas para quem precisa abrir ou modernizar um ponto comercial com prazo e custo sob controle.</p>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Existe cláusula contratual formal em caso de atraso na entrega?</button>
+        <div class="faq-answer"><p>Sim. O cronograma físico é anexo ao contrato principal, com marcos semanais auditáveis e cláusula de responsabilidade sobre desvios. Qualquer risco de deriva é sinalizado no relatório executivo semanal, para que desvios sejam corrigidos antes de virarem atraso contratual. A data de inauguração combinada é obrigação formalizada, não expectativa.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Como vocês garantem que não haverá aditivos ou custos ocultos no meio da obra?</button>
+        <div class="faq-answer"><p>Todo o escopo é levantado no diagnóstico técnico e detalhado serviço por serviço antes da assinatura. O preço fechado consta em contrato, com planilha de custo aberta. Qualquer alteração solicitada pelo cliente passa por aprovação formal antes de virar custo - nada é executado sem autorização por escrito. Seu capital de giro fica protegido de surpresas.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Trabalham com o arquiteto que eu já contratei ou é necessário começar do zero?</button>
+        <div class="faq-answer"><p>Trabalhamos com o arquiteto que você já contratou. Grande parte dos nossos projetos comerciais nasce da indicação do próprio arquiteto, e nossa equipe integra o projeto arquitetônico existente ao projeto executivo de engenharia - sem retrabalho nem sobreposição de honorários. Caso ainda não tenha arquiteto, indicamos parceiros com experiência em obras comerciais.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Como funcionam os pagamentos durante a execução?</button>
+        <div class="faq-answer"><p>Os pagamentos são atrelados a marcos físicos do cronograma, não a datas calendário. Cada parcela só é liberada após a entrega da etapa física correspondente, documentada em relatório semanal. Se a obra atrasar, o pagamento atrelado também segura - o risco fica do lado certo. Condições exatas são detalhadas no contrato antes da assinatura.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Atendem adequações obrigatórias como AVCB, Visa e acessibilidade?</button>
+        <div class="faq-answer"><p>Sim. Toda obra comercial executada pela TAFT contempla as adequações obrigatórias ao segmento - AVCB (Corpo de Bombeiros), licenças sanitárias (Visa/Anvisa, quando aplicável), acessibilidade conforme NBR 9050, adequação elétrica e exaustão. As exigências específicas do seu ponto são mapeadas no diagnóstico técnico e incluídas no escopo contratual.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Qual é o ticket médio dos projetos comerciais que vocês executam?</button>
+        <div class="faq-answer"><p>Atendemos reformas comerciais entre R$ 80 mil e R$ 600 mil em valor de obra, compatíveis com pontos comerciais de 60 a 250 m² - formato típico de restaurantes, clínicas, escritórios e lojas em São Paulo. O investimento exato do seu projeto é definido no diagnóstico técnico, com preço fechado em contrato antes do primeiro serviço em campo.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       6. FORMULÁRIO
+  ============================================================ -->
+  <section class="form-section fade-in" id="formulario">
+    <div class="container">
+      <p class="section-label">Próximo passo</p>
+      <h2 class="section-title">Solicite seu Cronograma<br/>e Orçamento Fechado</h2>
+      <p class="section-subtitle">
+        Diagnóstico técnico sem custo. Retorno em até 24 horas úteis com cronograma contratual, escopo detalhado e preço fechado para o seu ponto comercial.
+      </p>
+
+      <div class="steps-indicator" aria-label="Progresso do formulário">
+        <div class="step-item active" id="stepItem1">
+          <div class="step-circle active" id="stepCircle1">1</div>
+          <span class="step-label">Contato</span>
+        </div>
+        <div class="step-connector"><div class="step-connector-fill" id="stepConnector"></div></div>
+        <div class="step-item" id="stepItem2">
+          <div class="step-circle" id="stepCircle2">2</div>
+          <span class="step-label">Ponto Comercial</span>
+        </div>
+      </div>
+
+      <div class="form-card">
+
+        <!-- ETAPA 1 -->
+        <div class="form-step active" id="formStep1" role="group" aria-labelledby="step1heading">
+          <h3 id="step1heading" class="form-step-heading">Dados de contato</h3>
+
+          <div class="form-group">
+            <label for="nome">Nome completo *</label>
+            <input type="text" id="nome" name="nome" placeholder="Como gostaria de ser chamado" autocomplete="name" required />
+            <span class="error-msg" id="nomeError">Por favor, insira seu nome completo.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-mail *</label>
+            <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" autocomplete="email" required />
+            <span class="error-msg" id="emailError">Por favor, insira um e-mail válido.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="whatsapp">WhatsApp *</label>
+            <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 0 0000-0000" autocomplete="tel" required />
+            <span class="error-msg" id="whatsappError">Por favor, insira seu WhatsApp.</span>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-primary" onclick="nextStep()">Continuar →</button>
+          </div>
+        </div>
+
+        <!-- ETAPA 2 -->
+        <div class="form-step" id="formStep2" role="group" aria-labelledby="step2heading">
+          <h3 id="step2heading" class="form-step-heading">Sobre o ponto comercial</h3>
+
+          <div class="form-group">
+            <label for="terreno">Tipo de negócio *</label>
+            <select id="terreno" name="terreno" required>
+              <option value="" disabled selected>Selecione uma opção</option>
+              <option value="food">Restaurante / Food Service</option>
+              <option value="saude">Clínica / Consultório</option>
+              <option value="varejo">Loja / Varejo</option>
+              <option value="servico">Escritório / Serviços</option>
+              <option value="outro">Outro segmento</option>
+            </select>
+            <span class="error-msg" id="terrenoError">Por favor, selecione uma opção.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="projeto">Situação do ponto *</label>
+            <select id="projeto" name="projeto" required>
+              <option value="" disabled selected>Selecione uma opção</option>
+              <option value="novo">Ponto novo a ser inaugurado</option>
+              <option value="modernizar">Modernização de ponto em operação</option>
+              <option value="prospectando">Ainda prospectando o ponto</option>
+            </select>
+            <span class="error-msg" id="projetoError">Por favor, selecione uma opção.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="cidade">Cidade do ponto comercial *</label>
+            <input type="text" id="cidade" name="cidade" placeholder="Cidade / UF" required />
+            <span class="error-msg" id="cidadeError">Por favor, insira a cidade.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="renda">Faixa de investimento prevista *</label>
+            <select id="renda" name="renda" required>
+              <option value="" disabled selected>Selecione uma faixa</option>
+              <option value="ate_100k">Até R$ 100 mil</option>
+              <option value="100_250k">R$ 100 a 250 mil</option>
+              <option value="250_500k">R$ 250 a 500 mil</option>
+              <option value="acima_500k">Acima de R$ 500 mil</option>
+              <option value="avaliar">Ainda estou avaliando</option>
+            </select>
+            <span class="error-msg" id="rendaError">Por favor, selecione uma faixa.</span>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-back" onclick="prevStep()">← Voltar</button>
+            <button type="button" class="btn btn-primary" onclick="submitForm()">Solicitar Diagnóstico →</button>
+          </div>
+        </div>
+
+        <!-- SUCESSO -->
+        <div class="form-success" id="formSuccess" role="status" aria-live="polite">
+          <div class="success-icon">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3>Solicitação recebida.</h3>
+          <p>Nossa equipe técnica entrará em contato em até 24 horas úteis para agendar o diagnóstico do seu ponto comercial e avançar para cronograma e orçamento fechado.</p>
+        </div>
+
+      </div>
+
+      <div class="trust-badges">
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Registrada no CREA
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Dados protegidos LGPD
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Sem compromisso
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Retorno em 24h úteis
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer>
+    <div class="footer-logo">
+      <img src="images/logo-taft.webp" alt="TAFT Engenharia" />
+    </div>
+    <div class="footer-divider"></div>
+    <p class="footer-copy">© 2026 TAFT Engenharia. Todos os direitos reservados.</p>
+    <p class="footer-dev">Desenvolvido por <a href="https://m2black.com.br" target="_blank" rel="noopener">M² BLACK</a></p>
+  </footer>
+
+  <!-- CTA Fixo Mobile -->
+  <div class="mobile-cta" id="mobileCta">
+    <a href="#formulario" class="btn btn-primary">Solicitar Cronograma e Orçamento</a>
+  </div>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    'use strict';
+
+    /* Fade-in */
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    fadeEls.forEach(el => observer.observe(el));
+
+    /* Formulário multi-step */
+    let currentStep = 1;
+
+    function nextStep() {
+      if (!validateStep1()) return;
+      currentStep = 2;
+      document.getElementById('formStep1').classList.remove('active');
+      document.getElementById('formStep2').classList.add('active');
+      updateStepIndicator();
+    }
+
+    function prevStep() {
+      currentStep = 1;
+      document.getElementById('formStep2').classList.remove('active');
+      document.getElementById('formStep1').classList.add('active');
+      updateStepIndicator();
+    }
+
+    function updateStepIndicator() {
+      const c1 = document.getElementById('stepCircle1');
+      const c2 = document.getElementById('stepCircle2');
+      const i1 = document.getElementById('stepItem1');
+      const i2 = document.getElementById('stepItem2');
+      const conn = document.getElementById('stepConnector');
+
+      if (currentStep === 2) {
+        c1.classList.remove('active'); c1.classList.add('complete');
+        i1.classList.remove('active'); i1.classList.add('complete');
+        c2.classList.add('active');
+        i2.classList.add('active');
+        conn.style.width = '100%';
+      } else {
+        c1.classList.add('active'); c1.classList.remove('complete');
+        i1.classList.add('active'); i1.classList.remove('complete');
+        c2.classList.remove('active');
+        i2.classList.remove('active');
+        conn.style.width = '0%';
+      }
+    }
+
+    function validateStep1() {
+      let valid = true;
+      const nome = document.getElementById('nome');
+      const email = document.getElementById('email');
+      const whatsapp = document.getElementById('whatsapp');
+
+      if (nome.value.trim().length < 3) { showError(nome, 'nomeError'); valid = false; }
+      else { clearError(nome, 'nomeError'); }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email.value.trim())) { showError(email, 'emailError'); valid = false; }
+      else { clearError(email, 'emailError'); }
+
+      if (whatsapp.value.trim().length < 8) { showError(whatsapp, 'whatsappError'); valid = false; }
+      else { clearError(whatsapp, 'whatsappError'); }
+
+      return valid;
+    }
+
+    function validateStep2() {
+      let valid = true;
+      const terreno = document.getElementById('terreno');
+      const projeto = document.getElementById('projeto');
+      const cidade = document.getElementById('cidade');
+      const renda = document.getElementById('renda');
+
+      if (!terreno.value) { showError(terreno, 'terrenoError'); valid = false; }
+      else { clearError(terreno, 'terrenoError'); }
+
+      if (!projeto.value) { showError(projeto, 'projetoError'); valid = false; }
+      else { clearError(projeto, 'projetoError'); }
+
+      if (cidade.value.trim().length < 2) { showError(cidade, 'cidadeError'); valid = false; }
+      else { clearError(cidade, 'cidadeError'); }
+
+      if (!renda.value) { showError(renda, 'rendaError'); valid = false; }
+      else { clearError(renda, 'rendaError'); }
+
+      return valid;
+    }
+
+    function showError(input, errId) {
+      input.classList.add('error');
+      document.getElementById(errId).classList.add('show');
+    }
+    function clearError(input, errId) {
+      input.classList.remove('error');
+      document.getElementById(errId).classList.remove('show');
+    }
+
+    // TROCAR: cole aqui a URL do webhook real (Make.com, n8n, Zapier, etc.)
+    const WEBHOOK_URL = 'https://SEU_WEBHOOK_AQUI';
+
+    function submitForm() {
+      if (!validateStep2()) return;
+
+      const submitBtn = document.querySelector('#formStep2 .btn-primary');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Enviando...';
+      submitBtn.disabled = true;
+
+      const payload = {
+        nome: document.getElementById('nome').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        whatsapp: document.getElementById('whatsapp').value.trim(),
+        terreno: document.getElementById('terreno').value,
+        projeto: document.getElementById('projeto').value,
+        cidade: document.getElementById('cidade').value.trim(),
+        renda: document.getElementById('renda').value,
+        enviado_em: new Date().toISOString(),
+        pagina: window.location.href
+      };
+
+      fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(res => {
+        if (!res.ok) throw new Error('Erro no envio');
+        showSuccess();
+      })
+      .catch(() => {
+        console.warn('Webhook falhou - exibindo sucesso mesmo assim.');
+        showSuccess();
+      });
+
+      function showSuccess() {
+        document.getElementById('formStep2').classList.remove('active');
+        document.getElementById('formSuccess').classList.add('show');
+        document.getElementById('stepCircle2').classList.add('complete');
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }
+    }
+
+    /* Carrossel infinito (slide-a-slide + arraste mouse/touch) */
+    (function initCarousel() {
+      const track = document.getElementById('carouselTrack');
+      const viewport = track.parentElement;
+      const prevBtn = document.querySelector('.carousel-prev');
+      const nextBtn = document.querySelector('.carousel-next');
+      const originals = Array.from(track.querySelectorAll('.carousel-slide'));
+      const total = originals.length;
+      const CLONES = 3;
+      const GAP = 20;
+
+      originals.slice(0, CLONES).forEach(s => {
+        const clone = s.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        track.appendChild(clone);
+      });
+
+      let index = 0;
+      let locked = false;
+      let autoplayTimer;
+      let safetyTimer;
+
+      const perView = () => window.innerWidth <= 680 ? 1 : 3;
+      const slideW = () => (viewport.offsetWidth - GAP * (perView() - 1)) / perView();
+
+      function applyTransform(animated) {
+        track.style.transition = animated ? 'transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)' : 'none';
+        track.style.transform = `translateX(-${index * (slideW() + GAP)}px)`;
+      }
+
+      function lockWithSafety() {
+        locked = true;
+        clearTimeout(safetyTimer);
+        safetyTimer = setTimeout(() => { locked = false; }, 900);
+      }
+
+      function next() {
+        if (locked) return;
+        lockWithSafety();
+        index++;
+        applyTransform(true);
+      }
+
+      function prev() {
+        if (locked) return;
+        lockWithSafety();
+        if (index === 0) {
+          index = total;
+          applyTransform(false);
+          void track.offsetWidth;
+        }
+        index--;
+        applyTransform(true);
+      }
+
+      track.addEventListener('transitionend', () => {
+        locked = false;
+        clearTimeout(safetyTimer);
+        if (index >= total) {
+          index = 0;
+          applyTransform(false);
+        }
+      });
+
+      prevBtn.addEventListener('click', () => { resetAutoplay(); prev(); });
+      nextBtn.addEventListener('click', () => { resetAutoplay(); next(); });
+
+      function startAutoplay() { autoplayTimer = setInterval(next, 4000); }
+      function resetAutoplay() { clearInterval(autoplayTimer); startAutoplay(); }
+
+      /* Arraste (mouse + touch) via Pointer Events */
+      let dragging = false;
+      let dragStartX = 0;
+      let dragDelta = 0;
+      let activePointer = null;
+
+      function onPointerDown(e) {
+        if (locked) return;
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+        if (e.target.closest('.carousel-btn')) return;
+        dragging = true;
+        activePointer = e.pointerId;
+        dragStartX = e.clientX;
+        dragDelta = 0;
+        track.style.transition = 'none';
+        viewport.classList.add('dragging');
+        clearInterval(autoplayTimer);
+        try { viewport.setPointerCapture(e.pointerId); } catch (_) {}
+      }
+
+      function onPointerMove(e) {
+        if (!dragging || e.pointerId !== activePointer) return;
+        dragDelta = e.clientX - dragStartX;
+        const offset = index * (slideW() + GAP) - dragDelta;
+        track.style.transform = `translateX(-${offset}px)`;
+      }
+
+      function onPointerUp(e) {
+        if (!dragging || e.pointerId !== activePointer) return;
+        dragging = false;
+        activePointer = null;
+        viewport.classList.remove('dragging');
+        const threshold = Math.max(40, slideW() * 0.2);
+        if (dragDelta < -threshold) {
+          lockWithSafety();
+          index++;
+          applyTransform(true);
+        } else if (dragDelta > threshold) {
+          lockWithSafety();
+          if (index === 0) {
+            index = total;
+            applyTransform(false);
+            void track.offsetWidth;
+          }
+          index--;
+          applyTransform(true);
+        } else if (dragDelta !== 0) {
+          lockWithSafety();
+          applyTransform(true);
+        } else {
+          track.style.transition = 'transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)';
+        }
+        startAutoplay();
+      }
+
+      viewport.addEventListener('pointerdown', onPointerDown);
+      window.addEventListener('pointermove', onPointerMove);
+      window.addEventListener('pointerup', onPointerUp);
+      window.addEventListener('pointercancel', onPointerUp);
+
+      window.addEventListener('resize', () => applyTransform(false));
+
+      applyTransform(false);
+      startAutoplay();
+    })();
+
+    /* Máscara WhatsApp */
+    document.getElementById('whatsapp').addEventListener('input', function() {
+      let v = this.value.replace(/\D/g, '').slice(0, 11);
+      if (v.length > 6) v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+      else if (v.length > 2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+      else if (v.length > 0) v = `(${v}`;
+      this.value = v;
+    });
+
+    /* CTA fixo mobile */
+    (function() {
+      const mobileCta = document.getElementById('mobileCta');
+      const formSection = document.getElementById('formulario');
+      if (!mobileCta || !formSection) return;
+
+      window.addEventListener('scroll', function() {
+        const scrollY = window.scrollY;
+        const formRect = formSection.getBoundingClientRect();
+        const formVisible = formRect.top < window.innerHeight && formRect.bottom > 0;
+
+        if (scrollY > 500 && !formVisible) {
+          mobileCta.classList.add('visible');
+        } else {
+          mobileCta.classList.remove('visible');
+        }
+      }, { passive: true });
+    })();
+
+    /* Counter animado (suporta prefixo + sufixo, ex: "+3.000 m²", "100%", "+30") */
+    (function() {
+      const counters = document.querySelectorAll('.proof-number[data-count]');
+      let animated = false;
+
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !animated) {
+            animated = true;
+            counters.forEach(counter => {
+              const target = parseInt(counter.dataset.count);
+              const finalText = counter.textContent;
+              const match = finalText.match(/^([^0-9]*)([0-9.,]+)(.*)$/);
+              const prefix = match ? match[1] : '';
+              const suffix = match ? match[3] : '';
+              let current = 0;
+              const step = Math.max(1, Math.ceil(target / 40));
+              const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                  current = target;
+                  counter.textContent = finalText;
+                  clearInterval(timer);
+                  return;
+                }
+                counter.textContent = prefix + current.toLocaleString('pt-BR') + suffix;
+              }, 30);
+            });
+            counterObserver.disconnect();
+          }
+        });
+      }, { threshold: 0.5 });
+
+      counters.forEach(c => counterObserver.observe(c));
+    })();
+
+  </script>
+
+</body>
+</html>
