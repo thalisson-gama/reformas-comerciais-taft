@@ -1,0 +1,12 @@
+# Fontes brutas (WhatsApp, JPEG originais) - não sobem para o deploy
+base/
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
